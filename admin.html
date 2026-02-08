@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Brand</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-container">
+            <div class="login-header">
+                <h2>Admin Login</h2>
+                <p>Enter your credentials to access the dashboard</p>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" value="admin" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" value="password" required>
+                </div>
+                <div id="loginError" class="login-error"></div>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="adminContent" class="admin-content" style="display: none;">
+        <header class="admin-header">
+            <div class="admin-logo">Admin Dashboard</div>
+            <div class="admin-user">
+                <span id="adminUsername"></span>
+                <button id="logoutBtn" class="logout-btn">Logout</button>
+            </div>
+        </header>
+
+        <aside class="admin-sidebar">
+            <nav class="admin-nav">
+                <a href="#" class="admin-nav-link active" data-section="overview">Overview</a>
+                <a href="#" class="admin-nav-link" data-section="users">Users</a>
+                <a href="#" class="admin-nav-link" data-section="editor">Editor</a>
+                <a href="#" class="admin-nav-link" data-section="settings">Settings</a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <section id="overview" class="admin-section active">
+                <h2>Dashboard Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-icon">&#128100;</div>
+                        <div class="stat-info">
+                            <span class="stat-count" data-count="1250">0</span>
+                            <span class="stat-label">Total Users</span>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon">&#128202;</div>
+                        <div class="stat-info">
+                            <span class="stat-count" data-count="342">0</span>
+                            <span class="stat-label">Page Views</span>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon">&#128176;</div>
+                        <div class="stat-info">
+                            <span class="stat-count" data-count="15800">0</span>
+                            <span class="stat-label">Revenue ($)</span>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon">&#128065;</div>
+                        <div class="stat-info">
+                            <span class="stat-count" data-count="89">0</span>
+                            <span class="stat-label">Active Now</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <h3>Recent Activity</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <span class="activity-time">2 mins ago</span>
+                            <span class="activity-text">New user registered: john@example.com</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-time">15 mins ago</span>
+                            <span class="activity-text">Contact form submitted from contact page</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-time">1 hour ago</span>
+                            <span class="activity-text">Content updated: About page</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-time">3 hours ago</span>
+                            <span class="activity-text">New comment on Blog Post #5</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="users" class="admin-section">
+                <h2>User Management</h2>
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>001</td>
+                                <td>John Doe</td>
+                                <td>john@example.com</td>
+                                <td>Admin</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td><button class="action-btn">Edit</button></td>
+                            </tr>
+                            <tr>
+                                <td>002</td>
+                                <td>Jane Smith</td>
+                                <td>jane@example.com</td>
+                                <td>Editor</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td><button class="action-btn">Edit</button></td>
+                            </tr>
+                            <tr>
+                                <td>003</td>
+                                <td>Mike Johnson</td>
+                                <td>mike@example.com</td>
+                                <td>User</td>
+                                <td><span class="status-badge inactive">Inactive</span></td>
+                                <td><button class="action-btn">Edit</button></td>
+                            </tr>
+                            <tr>
+                                <td>004</td>
+                                <td>Sarah Wilson</td>
+                                <td>sarah@example.com</td>
+                                <td>User</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td><button class="action-btn">Edit</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="editor" class="admin-section">
+                <h2>Content Editor</h2>
+                <div class="editor-tabs">
+                    <button class="editor-tab active" data-page="index">Home Page</button>
+                    <button class="editor-tab" data-page="about">About Page</button>
+                    <button class="editor-tab" data-page="contact">Contact Page</button>
+                </div>
+
+                <div class="editor-panel active" id="panel-index">
+                    <h3>Home Page Content</h3>
+                    <div class="editor-form">
+                        <div class="editor-group">
+                            <label>Logo Text</label>
+                            <input type="text" id="edit-logo-text" data-target="logo-text">
+                        </div>
+                        <div class="editor-group">
+                            <label>Hero Title</label>
+                            <input type="text" id="edit-hero-title" data-target="hero-title">
+                        </div>
+                        <div class="editor-group">
+                            <label>Hero Subtitle</label>
+                            <textarea id="edit-hero-subtitle" data-target="hero-subtitle" rows="2"></textarea>
+                        </div>
+                        <div class="editor-group">
+                            <label>Features Title</label>
+                            <input type="text" id="edit-features-title" data-target="features-title">
+                        </div>
+                        <div class="editor-group">
+                            <label>Feature 1 - Title</label>
+                            <input type="text" id="edit-feature1-title" data-target="feature1-title">
+                        </div>
+                        <div class="editor-group">
+                            <label>Feature 1 - Text</label>
+                            <textarea id="edit-feature1-text" data-target="feature1-text" rows="2"></textarea>
+                        </div>
+                        <div class="editor-group">
+                            <label>Feature 2 - Title</label>
+                            <input type="text" id="edit-feature2-title" data-target="feature2-title">
+                        </div>
+                        <div class="editor-group">
+                            <label>Feature 2 - Text</label>
+                            <textarea id="edit-feature2-text" data-target="feature2-text" rows="2"></textarea>
+                        </div>
+                        <div class="editor-group">
+                            <label>Feature 3 - Title</label>
+                            <input type="text" id="edit-feature3-title" data-target="feature3-title">
+                        </div>
+                        <div class="editor-group">
+                            <label>Feature 3 - Text</label>
+                            <textarea id="edit-feature3-text" data-target="feature3-text" rows="2"></textarea>
+                        </div>
+                        <div class="editor-group">
+                            <label>Footer Text</label>
+                            <input type="text" id="edit-footer-text" data-target="footer-text">
+                        </div>
+                    </div>
+                    <button class="save-btn" id="save-index">Save Changes</button>
+                </div>
+
+                <div class="editor-panel" id="panel-about">
+                    <h3>About Page Content</h3>
+                    <div class="editor-form">
+                        <div class="editor-group">
+                            <label>Page Title</label>
+                            <input type="text" id="edit-about-page-title" data-target="about-page-title">
+                        </div>
+                        <div class="editor-group">
+                            <label>Page Subtitle</label>
+                            <textarea id="edit-about-page-subtitle" data-target="about-page-subtitle" rows="2"></textarea>
+                        </div>
+                        <div class="editor-group">
+                            <label>Story Title</label>
+                            <input type="text" id="edit-about-story-title" data-target="about-story-title">
+                        </div>
+                        <div class="editor-group">
+                            <label>Story Text 1</label>
+                            <textarea id="edit-about-story-text1" data-target="about-story-text1" rows="3"></textarea>
+                        </div>
+                        <div class="editor-group">
+                            <label>Story Text 2</label>
+                            <textarea id="edit-about-story-text2" data-target="about-story-text2" rows="3"></textarea>
+                        </div>
+                        <div class="editor-group">
+                            <label>Stat 1 - Value</label>
+                            <input type="text" id="edit-stat1-value" data-target="stat1-value">
+                        </div>
+                        <div class="editor-group">
+                            <label>Stat 2 - Value</label>
+                            <input type="text" id="edit-stat2-value" data-target="stat2-value">
+                        </div>
+                        <div class="editor-group">
+                            <label>Stat 3 - Value</label>
+                            <input type="text" id="edit-stat3-value" data-target="stat3-value">
+                        </div>
+                        <div class="editor-group">
+                            <label>Team Section Title</label>
+                            <input type="text" id="edit-team-title" data-target="team-title">
+                        </div>
+                        <div class="editor-group">
+                            <label>Team Member 1 - Name</label>
+                            <input type="text" id="edit-team1-name" data-target="team1-name">
+                        </div>
+                        <div class="editor-group">
+                            <label>Team Member 1 - Role</label>
+                            <input type="text" id="edit-team1-role" data-target="team1-role">
+                        </div>
+                        <div class="editor-group">
+                            <label>Team Member 2 - Name</label>
+                            <input type="text" id="edit-team2-name" data-target="team2-name">
+                        </div>
+                        <div class="editor-group">
+                            <label>Team Member 2 - Role</label>
+                            <input type="text" id="edit-team2-role" data-target="team2-role">
+                        </div>
+                        <div class="editor-group">
+                            <label>Team Member 3 - Name</label>
+                            <input type="text" id="edit-team3-name" data-target="team3-name">
+                        </div>
+                        <div class="editor-group">
+                            <label>Team Member 3 - Role</label>
+                            <input type="text" id="edit-team3-role" data-target="team3-role">
+                        </div>
+                    </div>
+                    <button class="save-btn" id="save-about">Save Changes</button>
+                </div>
+
+                <div class="editor-panel" id="panel-contact">
+                    <h3>Contact Page Content</h3>
+                    <div class="editor-form">
+                        <div class="editor-group">
+                            <label>Page Title</label>
+                            <input type="text" id="edit-contact-page-title" data-target="contact-page-title">
+                        </div>
+                        <div class="editor-group">
+                            <label>Page Subtitle</label>
+                            <textarea id="edit-contact-page-subtitle" data-target="contact-page-subtitle" rows="2"></textarea>
+                        </div>
+                        <div class="editor-group">
+                            <label>Section Title</label>
+                            <input type="text" id="edit-contact-section-title" data-target="contact-section-title">
+                        </div>
+                        <div class="editor-group">
+                            <label>Email</label>
+                            <input type="email" id="edit-contact-email" data-target="contact-email">
+                        </div>
+                        <div class="editor-group">
+                            <label>Phone</label>
+                            <input type="text" id="edit-contact-phone" data-target="contact-phone">
+                        </div>
+                        <div class="editor-group">
+                            <label>Address</label>
+                            <textarea id="edit-contact-address" data-target="contact-address" rows="2"></textarea>
+                        </div>
+                    </div>
+                    <button class="save-btn" id="save-contact">Save Changes</button>
+                </div>
+
+                <div class="editor-actions">
+                    <button class="action-btn" id="preview-changes">Preview Changes</button>
+                    <button class="action-btn" id="reset-defaults">Reset to Defaults</button>
+                </div>
+            </section>
+
+            <section id="settings" class="admin-section">
+                <h2>Settings</h2>
+                <div class="settings-form">
+                    <div class="settings-group">
+                        <h3>General Settings</h3>
+                        <div class="form-group">
+                            <label for="siteName">Site Name</label>
+                            <input type="text" id="siteName" value="Brand" class="settings-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="siteUrl">Site URL</label>
+                            <input type="url" id="siteUrl" value="https://www.example.com" class="settings-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="adminEmail">Admin Email</label>
+                            <input type="email" id="adminEmail" value="admin@brand.com" class="settings-input">
+                        </div>
+                    </div>
+                    <div class="settings-group">
+                        <h3>Security</h3>
+                        <div class="form-group">
+                            <label for="currentPass">Current Password</label>
+                            <input type="password" id="currentPass" class="settings-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="newPass">New Password</label>
+                            <input type="password" id="newPass" class="settings-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPass">Confirm New Password</label>
+                            <input type="password" id="confirmPass" class="settings-input">
+                        </div>
+                    </div>
+                    <button class="save-btn">Save Changes</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
